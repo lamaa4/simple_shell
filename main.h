@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef MAIN_H
+#define MAIN_H
 
 
 #include <stdlib.h>
@@ -9,5 +9,11 @@
 #include <unistd.h>
 
 extern char **environ;
+
+/* String functions */
+int _strlen(const char *s);
+char *_strcat(char *dest, const char *src);
+int _strcmp(char *s1, char *s2);
+char *_strdup(const char *);
 
 #endif
