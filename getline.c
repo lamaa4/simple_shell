@@ -4,12 +4,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 
 /**
- * 
- * read_line
- * 
- * 
- * 
- * */
+ * _getline - Read characters from the stream.
+ * @lineptr: A buffer to store the characters.
+ * @n: The size of lineptr.
+ * @stream: The stream to read from.
+ *
+ * Return: The number of bytes read.
+ */
 
 ssize_t _getline(char **lineptr, size_t *len, FILE *stream) {
     
