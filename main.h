@@ -10,6 +10,10 @@
 
 extern char **environ;
 
+/* Main */
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+
+
 /* String functions */
 int _strlen(const char *s);
 char *_strcat(char *dest, const char *src);
