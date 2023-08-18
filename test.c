@@ -1,3 +1,11 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include "main.h"
 #include<string.h>
 
@@ -79,6 +87,7 @@ char *my_strtok(char *str, const char *delim) {
     static char *saveptr = NULL;
     char *token_start = NULL;
     int is_delim = 0;
+    char **tokens;
 
     if (str != NULL) {
         saveptr = str;
@@ -98,10 +107,16 @@ for (int i=0;i<str_len;i++){
  
   printf("\ntoken_len=%d, start_token=%d\n",token_len,start_token);
   write(1,&str[start_token],token_len);
-        tokens_count++;
+        if(token_len!=0 && j==delim_len-1){
+            start_token=i+1;
+            tokens_count++;
+        tokens=(char **)realloc(tokens, tokens_count * sizeof(char *));
+        tokens[tokens_count-1]=_strndup(str,  start_token,token_len);
+
         printf("\n");
         start_token=i+1;
-        token_len=0; 
+        token_len=0;
+        break;}
         break;
     } if(j==delim_len-1){
     token_len++;
@@ -109,9 +124,17 @@ for (int i=0;i<str_len;i++){
     }
 }
 }
+        tokens_count++;
+        tokens=(char **)realloc(tokens, tokens_count * sizeof(char *));
+        tokens[tokens_count-1]=_strndup(str,  start_token,token_len);
+
   printf("\ntoken_len=%d, start_token=%d\n",token_len,start_token);
   write(1,&str[start_token],token_len);
-printf("\nstr_len = %d, delim_len = %d, tokens_count = %d",str_len,delim_len,tokens_count);
+printf("\nstr_len = %d, delim_len = %d, tokens_count = %d\n",str_len,delim_len,tokens_count);
+
+for(int i= 0 ; i< tokens_count; i++)
+printf("String %d: %s\n", i, tokens[i]);
+
 exit(0);
 
     while (*saveptr != '\0') {
@@ -143,8 +166,8 @@ exit(0);
 }
 
 int main() {
-    char input[] = "Hello,World! This is,a,test";
-    const char delim[] = ", ";
+    char input[] = "Hello,World! This is,a,test \nhi every one   lol\n \n      , ,  ";
+    const char delim[] = ", \n";
     
      char input1[] = "Hello,World! This is,a,test";
     const char delim1[] = ", ";
