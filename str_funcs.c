@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 int _strlen(const char *s);
 char *_strcat(char *dest, const char *src);
 int _strcmp(char *s1, char *s2);
@@ -12,8 +11,8 @@ char *_strdup(const char *);
  * @str: A pointer to the characters string.
  * Return: the length of str
  */
-
-int _strlen(char *str)
+ 
+int _strlen(const char *str)
 {
   
 	int l=0;
@@ -92,7 +91,8 @@ int _strcmp(char *s1, char *s2)
  *
  * Return: pointer to the duplicated string
  */
-char *_strdup(char *str)
+
+char *_strdup(const char *str)
 {
   char *dup;
   int i=0, l;
