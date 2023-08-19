@@ -4,6 +4,13 @@ char *token(const char *str, const char *charset);
 char *_strtok(char *str, const char *delim);
 int is_delim(char c, const char *delim);
 
+/**
+ * is_delim - Checks if the character c matches any of the delimiter characters
+ * @c: The character to be checked 
+ * @delim: Delimiter characters
+ * Return: 0  if c matches any of the delimiter characters in delim
+ */
+
 int is_delim(char c, const char *delim)
 {
     
@@ -17,6 +24,13 @@ int is_delim(char c, const char *delim)
     }
     return 1;
 }
+
+/**
+ * _strlen - Search for the first delimiter character in str
+ * @str: A pointer to the characters string
+ * @delim: Delimiter characters
+ * Return: A pointer to the beginning of the token
+ */
 
 char *token(const char *str, const char *delim)
 {
@@ -36,6 +50,13 @@ char *token(const char *str, const char *delim)
     }
     return NULL;
 }
+
+/**
+ * _strlen - Break a string into a sequence of tokens
+ * @str: A pointer to the characters string
+ * @delim: Delimiter characters
+ * Return: A pointer to the first token
+ */
 
 char *_strtok(char *str, const char *delim)
 {
