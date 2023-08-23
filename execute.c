@@ -79,7 +79,8 @@ int cmd_execute(const char *filename, char *const argv[])
                 }
                 else
                 {
-                        int nbr_paths = count_tokens(path_env, ":");
+                        int nbr_paths;
+                        nbr_paths = count_tokens(path_env, ":");
                         char *path_dirs[nbr_paths], *cmd_path;
                         if (nbr_paths == 0)
                         {
