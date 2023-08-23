@@ -40,7 +40,7 @@ char *_strcat(char *dest, const char *src)
 
 	if (dest_copy==NULL)
 	{
-    return(NULL);
+		return(NULL);
 	}
   
 	while (dest_copy[i] != '\0')
@@ -51,10 +51,10 @@ char *_strcat(char *dest, const char *src)
 
 	while (src[j] != '\0')
 	{
-    dest[i] = src[j];
+		dest[i] = src[j];
 		j++;
 		i++;
-    }
+	}
     
   dest[i] = '\0';
 
@@ -104,7 +104,8 @@ char *_strdup(const char *str)
   
   dup = malloc(sizeof(char) * (l + 1));
   
-  if (dup == NULL) return (NULL);
+  if (dup == NULL) 
+	  return (NULL);
   
   while (str[i] != '\0')
   {
@@ -137,5 +138,5 @@ char *_strcpy(char *dest, const char *src)
 
     *dest = '\0';
 
-    return ptr;
+    return (ptr);
 }
