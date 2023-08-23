@@ -117,11 +117,6 @@ int cmd_execute(const char *filename, char *const argv[])
                                 
                                 if (stat(cmd_path, &st) == 0 && S_ISREG(st.st_mode) && (st.st_mode & S_IXUSR))
                                 {
-                                        for (i = 0; i < dir_count; i++)
-                                        {
-                                                free(path_dirs[i]);
-                                        }
-                                        
                                         return execve(cmd_path, argv, NULL);
                                 }
                                 else
