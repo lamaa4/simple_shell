@@ -16,11 +16,11 @@ int is_delim(char c, const char *delim)
     {
         if (c == *delim)
         {
-            return 0;
+            return (0);
         }
         delim++;
     }
-    return 1;
+    return (1);
 }
 
 char *token(const char *str, const char *delim)
@@ -33,13 +33,13 @@ char *token(const char *str, const char *delim)
         {
             if (str[i] == delim[j]) 
             {
-                return (char *)(str+i);
+                return ((char *)(str+i));
             }
         }
         
         i++;
     }
-    return NULL;
+    return (NULL);
 }
 
 char *_strtok(char *str, const char *delim)
@@ -55,7 +55,7 @@ char *_strtok(char *str, const char *delim)
 
     if (saveptr == NULL || *saveptr == '\0')
     { 
-        return NULL;
+        return (NULL);
     }
 
     token_end = token(saveptr, delim);
@@ -89,7 +89,7 @@ char *_strtok(char *str, const char *delim)
         
     }
     
-    return token_start;
+    return (token_start);
 }
 
 /**
