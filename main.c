@@ -4,7 +4,7 @@ int main(int argc, char *argv[])
 {
         FILE *input_file = NULL;
         int non_interactive = 0;
-        int fd;
+        int fd, i;
         
         if (argc > 1)
         {
@@ -37,9 +37,10 @@ int main(int argc, char *argv[])
                         }
                         else
                         {
+                                ssize_t read_size;
                                 printf("$ ");
                                 fflush(stdout);
-                                ssize_t read_size = _getline(&line, &line_size, STDIN_FILENO);
+                                read_size = _getline(&line, &line_size, STDIN_FILENO);
                                 if (read_size == -1)
                                 {
                                         break;
@@ -52,10 +53,10 @@ int main(int argc, char *argv[])
                         
                         int ARGS;
                         ARGS = count_tokens(line, " ");
-                        char *args[ARGS];
+                        char *args[ARGS], *token;
                         int arg_count = 0;
                         
-                        char *token = _strtok(line, " ");
+                        token = _strtok(line, " ");
                         if (token == NULL)
                         {
                                 continue;
@@ -77,7 +78,6 @@ int main(int argc, char *argv[])
                         args[arg_count] = NULL;
                         if (execute_builtin(args[0], args))
                         {
-                                int i ;
                                 for (i = 0; i < arg_count; i++)
                                 {
                                         free(args[i]);
@@ -90,7 +90,8 @@ int main(int argc, char *argv[])
                                 continue;
                         }
                         
-                        pid_t pid = fork();
+                        pid_t pid;
+                        pid = fork();
                         if (pid == 0)
                         {
                                 cmd_execute(args[0], args);
@@ -106,7 +107,6 @@ int main(int argc, char *argv[])
                                 waitpid(pid, NULL, 0);
                         }
                         
-                        int i;
                         for (i = 0; i < arg_count; i++)
                         {
                                 free(args[i]);
