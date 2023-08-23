@@ -24,9 +24,11 @@ int main(int argc, char *argv[])
         while (1)
         {
                 pid_t pid;
-                const int ARGS = count_tokens(line, " ");
-                char *args[ARGS], *token;
+                int nbr_args = count_tokens(line, " ");
+                char *token;
                 int arg_count = 0;
+
+                char **=malloc(nbr_args * sizeof(char *));
                 
                 if (non_interactive)
                 {
