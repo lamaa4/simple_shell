@@ -1,13 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - Prints "Hello.
+ * main - Prints somme of 2 integer.
  *
  * Return: Always 0.
  */
+
 int main(void)
 {
-	printf("Hello,\n");
+int a = 1, b = 2;
+int s = a + b;
 
-	return (0);
+printf("The sum of is: %d\n", s);
+
+return (0);
+
 }
