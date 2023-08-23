@@ -52,6 +52,10 @@ int execute_builtin(const char *cmd, char *const args[])
                 }
                 return (1);
         }
+        else if (_strcmp(cmd, "env") == 0)
+        {
+                return(print_env(cmd));
+        }
         return (0);
 }
 
@@ -65,11 +69,11 @@ int execute_builtin(const char *cmd, char *const args[])
   
 int cmd_execute(const char *filename, char *const argv[]) 
 {
-        /*if (_strchr(filename, '/') != NULL)
+        if (_strchr(filename, '/') != NULL)
         {
                 return (execve(filename, argv, NULL));
         }
-        else*/
+        else
         {
                 char *path_env;
                 path_env = getenv("PATH");
