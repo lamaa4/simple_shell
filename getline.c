@@ -14,7 +14,7 @@ ssize_t _getline(char **lineptr, size_t *len, int fd);
 
 ssize_t _getline(char **lineptr, size_t *len, int fd) {
     
-    int nbrCharsRead = 0;
+    size_t nbrCharsRead = 0;
     char c;
     ssize_t r;
     
@@ -60,7 +60,7 @@ c='a';
 			break;
 		}
 
-        if (nbrCharsRead >= *len - 1) 
+        if (nbrCharsRead >= ((size_t) (*len - 1))) 
         {
            char *new_ptr = (char *)realloc(*lineptr, *len+1);
 
