@@ -2,9 +2,9 @@
 
 int _strlen(const char *s);
 char *_strcat(char *dest, const char *src);
-int _strcmp(char *s1, char *s2);
-char *_strdup(const char *);
-char *_strndup(const char *src, size_t start_pos, size_t n);
+int _strcmp(const char *s1, char *s2);
+char *_strdup(const char *str);
+char *_strcpy(char *dest, const char *src);
 
 /**
  * _strlen - Computes the length of a string
@@ -36,9 +36,8 @@ char *_strcat(char *dest, const char *src)
 {  
 	int i=0,j=0;
   const char* dest_copy=dest;
-	
-	dest=malloc(sizeof(char*)*(_strlen(dest)+_strlen(src)+1));
-	
+
+
 	if (dest_copy==NULL)
 	{
     return(NULL);
@@ -58,6 +57,7 @@ char *_strcat(char *dest, const char *src)
     }
     
   dest[i] = '\0';
+
   return (dest);
 }
 
@@ -70,7 +70,7 @@ char *_strcat(char *dest, const char *src)
  *         a positive value if s1 is greater than s2
  */
 
-int _strcmp(char *s1, char *s2)
+int _strcmp(const char *s1, char *s2)
 {
     int i=0;
     
@@ -111,35 +111,31 @@ char *_strdup(const char *str)
     dup[i] = str[i];
     i++;
   }
+  dup[l] = '\0';
   
   return (dup);
 }
 
 /**
- * _strndup - Duplicates a string
+ * _strcpy- Copies a string from the source to the destination
  * @src: Pointer to the source string
- * @n: Number of characters to copy
+ * @dest: Pointer to the destination string
  *
  * Return: Pointer to the duplicated string
  */
- 
-char *_strndup(const char *src, size_t start_pos, size_t n)
+
+char *_strcpy(char *dest, const char *src)
 {
- 
-    char *copy = malloc(sizeof(char *)*(n + 1));
+    char *ptr = dest;
 
-    if (copy != NULL) 
+    while (*src != '\0')
     {
-        int i = 0;
-
-	while ( i < n)
-	{
-		copy[i] = src[start_pos+i];
-		i++;
-	}
-
-        copy[n] = '\0';
+        *dest = *src;
+        dest++;
+        src++;
     }
 
-    return copy;
+    *dest = '\0';
+
+    return ptr;
 }
