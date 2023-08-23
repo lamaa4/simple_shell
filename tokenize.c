@@ -1,15 +1,13 @@
-#include "main.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 char *token(const char *str, const char *charset);
 char *_strtok(char *str, const char *delim);
 int is_delim(char c, const char *delim);
-
-/**
- * is_delim - Checks if the character c matches any of the delimiter characters
- * @c: The character to be checked 
- * @delim: Delimiter characters
- * Return: 0  if c matches any of the delimiter characters in delim
- */
+int count_tokens(char *str, char *delim);
+int token_len(char *str, char *delim);
 
 int is_delim(char c, const char *delim)
 {
@@ -24,13 +22,6 @@ int is_delim(char c, const char *delim)
     }
     return 1;
 }
-
-/**
- * _strlen - Search for the first delimiter character in str
- * @str: A pointer to the characters string
- * @delim: Delimiter characters
- * Return: A pointer to the beginning of the token
- */
 
 char *token(const char *str, const char *delim)
 {
@@ -50,13 +41,6 @@ char *token(const char *str, const char *delim)
     }
     return NULL;
 }
-
-/**
- * _strlen - Break a string into a sequence of tokens
- * @str: A pointer to the characters string
- * @delim: Delimiter characters
- * Return: A pointer to the first token
- */
 
 char *_strtok(char *str, const char *delim)
 {
@@ -78,22 +62,18 @@ char *_strtok(char *str, const char *delim)
 
     if (token_end != NULL) 
     {
-        int i=0, count_delim = 0;
+        int i = 0, count_delim = 0;
         char *c;
         for (c=token_end; *c != '\0'; c++)
         {
-            if (is_delim (*c,delim) == 0)
+            if (is_delim(*c,delim) == 0)
             {
-                if (is_delim (*(c + 1),delim) == 1 )
+                if (is_delim(*(c + 1),delim) == 1 )
                 {
                     break;
                 }
-                 
-            count_delim++;
-           
-            
-
-            }
+                count_delim++;
+        }
        
    }
    
@@ -110,4 +90,53 @@ char *_strtok(char *str, const char *delim)
     }
     
     return token_start;
+}
+
+/**
+ * nbr_tokens - Counts the number of delimited
+ *                words contained within a string.
+ * @str: The string to be searched.
+ * @delim: The delimiter character.
+ *
+ * Return: The number of words contained within str.
+ */
+int count_tokens(char *str, char *delim)
+{
+		int index, tokens = 0, len = 0;
+
+	for (index = 0; *(str + index); index++)
+		len++;
+
+	for (index = 0; index < len; index++)
+	{
+		if (*(str + index) != *delim)
+		{
+			tokens++;
+			index += token_len(str + index, delim);
+		}
+	}
+
+	return (tokens);
+}
+
+/**
+ * token_len - Locates the delimiter index marking the end
+ *             of the first token contained within a string.
+ * @str: The string to be searched.
+ * @delim: The delimiter character.
+ *
+ * Return: The delimiter index marking the end of
+ *         the intitial token pointed to be str.
+ */
+int token_len(char *str, char *delim)
+{
+	int index = 0, len = 0;
+
+	while (*(str + index) && *(str + index) != *delim)
+	{
+		len++;
+		index++;
+	}
+
+	return (len);
 }
