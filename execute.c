@@ -79,13 +79,13 @@ int cmd_execute(const char *filename, char *const argv[])
                 }
                 else
                 {
+                        char *path_dirs[nbr_paths], *cmd_path;
                         int nbr_paths = count_tokens(path_env, ":");
                         if (nbr_paths == 0)
                         {
                                 return (-1);
                         }
                         
-                        char *path_dirs[nbr_paths], *cmd_path;
                         int dir_len, cmd_len = _strlen(filename);
                         
                         char *token = _strtok(path_env, ":");
@@ -93,6 +93,7 @@ int cmd_execute(const char *filename, char *const argv[])
                         
                         while (token != NULL && dir_count < nbr_paths)
                         {
+                                struct stat st;
                                 path_dirs[dir_count] = token;
                                 
                                 dir_len = _strlen(token);
@@ -103,7 +104,6 @@ int cmd_execute(const char *filename, char *const argv[])
                                 _strcat(cmd_path, filename);
                                 _strcat(cmd_path, "\0");
                                 
-                                struct stat st;
                                 if (stat(cmd_path, &st) == 0 && S_ISREG(st.st_mode) && (st.st_mode & S_IXUSR))
                                 {
                                         return execve(cmd_path, argv, NULL);
