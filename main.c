@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
         {
                 if (non_interactive)
                 {
-                        ssize_t read_size = _getline(&line, &line_size, fd);
+                        ssize_t read_size; 
+                        read_size = _getline(&line, &line_size, fd);
                         if (read_size == -1)
                         {
                                 break;
@@ -49,7 +50,8 @@ int main(int argc, char *argv[])
                                 }
                         }
                         
-                        int ARGS = count_tokens(line, " ");
+                        int ARGS;
+                        ARGS = count_tokens(line, " ");
                         char *args[ARGS];
                         int arg_count = 0;
                         
@@ -75,7 +77,8 @@ int main(int argc, char *argv[])
                         args[arg_count] = NULL;
                         if (execute_builtin(args[0], args))
                         {
-                                for (int i = 0; i < arg_count; i++)
+                                int i ;
+                                for (i = 0; i < arg_count; i++)
                                 {
                                         free(args[i]);
                                 }
@@ -103,8 +106,8 @@ int main(int argc, char *argv[])
                                 waitpid(pid, NULL, 0);
                         }
                         
-                        
-                        for (int i = 0; i < arg_count; i++)
+                        int i;
+                        for (i = 0; i < arg_count; i++)
                         {
                                 free(args[i]);
                         }
