@@ -81,7 +81,7 @@ int cmd_execute(const char *filename, char *const argv[])
                 }
                 else
                 {
-                        int nbr_paths;
+                        const int nbr_paths;
                         int dir_len, cmd_len;
                         
                         nbr_paths = count_tokens(path_env, ":");
