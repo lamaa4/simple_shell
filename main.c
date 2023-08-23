@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
         {
                 int ARGS;
                 pid_t pid;
+                ARGS = count_tokens(line, " ");
+                char *args[ARGS], *token;
                 
                 if (non_interactive)
                 {
@@ -55,8 +57,6 @@ int main(int argc, char *argv[])
                                 }
                         }
                         
-                        ARGS = count_tokens(line, " ");
-                        char *args[ARGS], *token;
                         int arg_count = 0;
                         
                         token = _strtok(line, " ");
