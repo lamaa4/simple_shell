@@ -81,12 +81,17 @@ int cmd_execute(const char *filename, char *const argv[])
                 }
                 else
                 {
-                        int dir_len, cmd_len, dir_count;
+                        int i, dir_len, cmd_len, dir_count;
                         
                         int nbr_paths = count_tokens(path_env, ":");
                         char *cmd_path, *token;
 
                         char **path_dirs=malloc(nbr_paths * sizeof(char *));
+                        
+                        if (path_dirs == NULL)
+                        {
+                                return 1;
+                        }
                         
                         if (nbr_paths == 0)
                         {
@@ -112,6 +117,11 @@ int cmd_execute(const char *filename, char *const argv[])
                                 
                                 if (stat(cmd_path, &st) == 0 && S_ISREG(st.st_mode) && (st.st_mode & S_IXUSR))
                                 {
+                                        for (i = 0; i < dir_count; i++)
+                                        {
+                                                free(path_dirs[i]);
+                                        }
+                                        
                                         return execve(cmd_path, argv, NULL);
                                 }
                                 else
@@ -121,8 +131,11 @@ int cmd_execute(const char *filename, char *const argv[])
                                         dir_count++;
                                 }
                         }
+                        
+                        
                         return -1;
                 }
+                
                 
         }
         return -1;
