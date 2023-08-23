@@ -71,7 +71,9 @@ int cmd_execute(const char *filename, char *const argv[])
         }
         else
         {
-                char *path_env = getenv("PATH");
+                char *path_env;
+                path_env = getenv("PATH");
+                
                 if (path_env == NULL)
                 {
                         perror("getenv");
@@ -80,15 +82,16 @@ int cmd_execute(const char *filename, char *const argv[])
                 else
                 {
                         int nbr_paths;
+                        int dir_len, cmd_len;
+                        
                         nbr_paths = count_tokens(path_env, ":");
                         char *path_dirs[nbr_paths], *cmd_path;
+                        
                         if (nbr_paths == 0)
                         {
                                 return (-1);
                         }
-                        
-                        int dir_len, cmd_len;
-                                                
+                                                                   
                         char *token = _strtok(path_env, ":");
                         int dir_count = 0;
                         cmd_len = _strlen(filename);
