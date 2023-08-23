@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         {
                 int const ARGS;
                 pid_t pid;
-                ARGS = count_tokens(line, " ");
+                ARGS = (const) count_tokens(line, " ");
                 char *args[ARGS], *token;
                 int arg_count = 0;
                 
