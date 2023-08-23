@@ -23,9 +23,8 @@ int main(int argc, char *argv[])
 
         while (1)
         {
-                int const ARGS;
                 pid_t pid;
-                ARGS = (const) count_tokens(line, " ");
+                const int ARGS = count_tokens(line, " ");
                 char *args[ARGS], *token;
                 int arg_count = 0;
                 
