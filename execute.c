@@ -18,12 +18,12 @@ char *_strchr(const char *str, int character)
         {
                 if (*str == character)
                 {
-                        return (char *)str;
+                        return ((char *)str);
                 }
                 str++;
         }
         
-        return NULL;
+        return (NULL);
 }
 
 /**
@@ -50,9 +50,9 @@ int execute_builtin(const char *cmd, char *const args[])
                                 perror("cd");
                         }
                 }
-                return 1;
+                return (1);
         }
-        return 0;
+        return (0);
 }
 
 /**
@@ -67,7 +67,7 @@ int cmd_execute(const char *filename, char *const argv[])
 {
         if (_strchr(filename, '/') != NULL)
         {
-                return execve(filename, argv, NULL);
+                return (execve(filename, argv, NULL));
         }
         else
         {
@@ -77,7 +77,7 @@ int cmd_execute(const char *filename, char *const argv[])
                 if (path_env == NULL)
                 {
                         perror("getenv");
-                        return -1;
+                        return (-1);
                 }
                 else
                 {
@@ -90,7 +90,7 @@ int cmd_execute(const char *filename, char *const argv[])
                         
                         if (path_dirs == NULL)
                         {
-                                return 1;
+                                return (1);
                         }
                         
                         if (nbr_paths == 0)
@@ -117,7 +117,7 @@ int cmd_execute(const char *filename, char *const argv[])
                                 
                                 if (stat(cmd_path, &st) == 0 && S_ISREG(st.st_mode) && (st.st_mode & S_IXUSR))
                                 {
-                                        return execve(cmd_path, argv, NULL);
+                                        return (execve(cmd_path, argv, NULL));
                                 }
                                 else
                                 {
@@ -128,11 +128,10 @@ int cmd_execute(const char *filename, char *const argv[])
                         }
                         
                         
-                        return -1;
+                        return (-1);
                 }
                 
                 
         }
-        return -1;
-        
-} 
+        return (-1);        
+}
