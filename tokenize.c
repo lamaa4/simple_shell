@@ -62,7 +62,7 @@ char *_strtok(char *str, const char *delim)
 
     if (token_end != NULL) 
     {
-        int i = 0, count_delim = 0;
+        int count_delim = 0;
         char *c;
         for (c=token_end; *c != '\0'; c++)
         {
