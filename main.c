@@ -5,6 +5,8 @@ int main(int argc, char *argv[])
         FILE *input_file = NULL;
         int non_interactive = 0;
         int fd, i;
+        char *line = NULL;
+        size_t line_size;
         
         if (argc > 1)
         {
@@ -17,8 +19,7 @@ int main(int argc, char *argv[])
                             non_interactive = 1;
                 
         }
-        char *line = NULL;
-        size_t line_size = 0;
+        line_size = 0;
 
         while (1)
         {
