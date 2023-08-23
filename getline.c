@@ -78,5 +78,5 @@ c='a';
 
     (*lineptr)[nbrCharsRead] = '\0'; 
 
-    return nbrCharsRead;
+    return (nbrCharsRead);
 }
