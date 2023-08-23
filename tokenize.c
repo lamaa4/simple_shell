@@ -46,7 +46,7 @@ char *_strtok(char *str, const char *delim)
 {
     static char *saveptr = NULL;
     char *token_start = NULL;
-    int delim_len = _strlen(delim);
+  //  int delim_len = _strlen(delim);
 
     if (str != NULL)
     {
