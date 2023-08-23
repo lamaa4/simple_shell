@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
                             if (fd == -1)
                             {
                                     perror("open");
-                                    return 1;
+                                    return (1);
                             }
                             non_interactive = 1;
                 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
                         
                         if (args == NULL)
                         {
-                                return 1;
+                                return (1);
                                 
                         }
                                                
@@ -134,5 +134,5 @@ int main(int argc, char *argv[])
             fclose(input_file);
     }
 
-    return 0;
+    return (0);
 }
