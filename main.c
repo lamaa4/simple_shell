@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
                 pid_t pid;
                 ARGS = count_tokens(line, " ");
                 char *args[ARGS], *token;
+                int arg_count = 0;
                 
                 if (non_interactive)
                 {
@@ -56,9 +57,7 @@ int main(int argc, char *argv[])
                                         line[read_size - 1] = '\0';
                                 }
                         }
-                        
-                        int arg_count = 0;
-                        
+                                               
                         token = _strtok(line, " ");
                         if (token == NULL)
                         {
