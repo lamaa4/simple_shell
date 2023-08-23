@@ -83,8 +83,10 @@ int cmd_execute(const char *filename, char *const argv[])
                 {
                         int dir_len, cmd_len, dir_count;
                         
-                        const int nbr_paths = count_tokens(path_env, ":");
-                        char *path_dirs[nbr_paths], *cmd_path, *token;
+                        int nbr_paths = count_tokens(path_env, ":");
+                        char *cmd_path, *token;
+
+                        char **path_dirs=malloc(nbr_paths * sizeof(char *));
                         
                         if (nbr_paths == 0)
                         {
