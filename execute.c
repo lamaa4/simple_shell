@@ -81,7 +81,7 @@ int cmd_execute(const char *filename, char *const argv[])
                 }
                 else
                 {
-                        int dir_len, cmd_len;
+                        int dir_len, cmd_len, dir_count;
                         
                         const int nbr_paths = count_tokens(path_env, ":");
                         char *path_dirs[nbr_paths], *cmd_path, *token;
@@ -92,7 +92,7 @@ int cmd_execute(const char *filename, char *const argv[])
                         }
                                                                    
                         token = _strtok(path_env, ":");
-                        int dir_count = 0;
+                        dir_count = 0;
                         cmd_len = _strlen(filename);
                         
                         while (token != NULL && dir_count < nbr_paths)
