@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
         while (1)
         {
-                int ARGS;
+                const int ARGS;
                 pid_t pid;
                 ARGS = count_tokens(line, " ");
                 char *args[ARGS], *token;
