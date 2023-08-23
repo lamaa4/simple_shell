@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
         while (1)
         {
                 pid_t pid;
-                int nbr_args; //= count_tokens(line, " ");                printf("-----------%s",line);fflush(stdout);
+                int nbr_args;
                 char *token;
                 int arg_count = 0;
 
-                char **args; //= malloc(nbr_args * sizeof(char *));
+                char **args; 
                 
                 if (non_interactive)
                 {
