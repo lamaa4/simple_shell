@@ -14,7 +14,7 @@ ssize_t _getline(char **lineptr, size_t *len, int fd);
 
 ssize_t _getline(char **lineptr, size_t *len, int fd) {
     
-    ssize_t nbrCharsRead = 0;
+    int nbrCharsRead = 0;
     char c;
     ssize_t r;
     
