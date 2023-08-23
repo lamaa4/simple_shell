@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
                 char *token;
                 int arg_count = 0;
 
-                char **args=malloc(nbr_args * sizeof(char *));
+                char **args = malloc(nbr_args * sizeof(char *));
                 
                 if (non_interactive)
                 {
