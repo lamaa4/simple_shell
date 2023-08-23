@@ -1,6 +1,6 @@
 #include "main.h"
 
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t _getline(char **lineptr, size_t *len, int fd);
 
 
 /**
@@ -12,7 +12,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
  * Return: The number of bytes read.
  */
 
-ssize_t _getline(char **lineptr, size_t *len, FILE *stream) {
+ssize_t _getline(char **lineptr, size_t *len, int fd) {
     
     ssize_t nbrCharsRead = 0;
     char c;
@@ -33,23 +33,26 @@ ssize_t _getline(char **lineptr, size_t *len, FILE *stream) {
         }
     }
     
-        
+
     
 c='a';
     while (c!='\n') 
     {
-        r = read(STDIN_FILENO, &c, 1);
+        r = read(fd, &c, 1);
 
         if (r == -1) 
         {
+            lineptr = NULL;
             free(lineptr);
             return (-1);
             
         } 
-        else if (r == 0 && nbrCharsRead== 0)
+        else if (r == 0 && nbrCharsRead == 0)
         {
+            
+            lineptr = NULL;
             free(lineptr);
-            return (-1); // No characters read (end of file or error)
+            return (-1);
            
         }else if (r == 0 && nbrCharsRead != 0)
         {
@@ -59,12 +62,11 @@ c='a';
 
         if (nbrCharsRead >= *len - 1) 
         {
-           // *len *= 2; // Double the buffer size
-            char *new_ptr = (char *)realloc(*lineptr, *len+1);
+           char *new_ptr = (char *)realloc(*lineptr, *len+1);
 
             if (new_ptr == NULL) 
             {
-                return (-1); // Memory allocation error
+                return (-1);
             }
 
             *lineptr = new_ptr;
@@ -72,12 +74,9 @@ c='a';
 
         (*lineptr)[nbrCharsRead++] = c;
 
-        /*if (c == '\n') {
-            break;
-        }*/
     }
 
-    (*lineptr)[nbrCharsRead] = '\0'; // Null-terminate the string
+    (*lineptr)[nbrCharsRead] = '\0'; 
 
     return nbrCharsRead;
 }
