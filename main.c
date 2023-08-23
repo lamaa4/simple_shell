@@ -22,6 +22,9 @@ int main(int argc, char *argv[])
 
         while (1)
         {
+                int ARGS;
+                pid_t pid;
+                
                 if (non_interactive)
                 {
                         ssize_t read_size; 
@@ -51,7 +54,6 @@ int main(int argc, char *argv[])
                                 }
                         }
                         
-                        int ARGS;
                         ARGS = count_tokens(line, " ");
                         char *args[ARGS], *token;
                         int arg_count = 0;
@@ -90,7 +92,6 @@ int main(int argc, char *argv[])
                                 continue;
                         }
                         
-                        pid_t pid;
                         pid = fork();
                         if (pid == 0)
                         {
