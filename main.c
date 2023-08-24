@@ -1,5 +1,4 @@
 #include "main.h"
-
 int main(int argc, char *argv[])
 {
         FILE *input_file = NULL;
@@ -94,11 +93,7 @@ int main(int argc, char *argv[])
                                 {
                                         free(args[i]);
                                 }
-                                
-                                if (line != NULL)
-                                {
-                                        free(line);
-                                }
+                                free(line);
                                 continue;
                         }
                         
@@ -124,7 +119,7 @@ int main(int argc, char *argv[])
                         }
     }
     
-    if (line != NULL)
+    if (line)
     {
             free(line);
     }
