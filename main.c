@@ -62,13 +62,13 @@ else
 {
 ssize_t read_size;
 
-//write(STDOUT_FILENO, "$ ", 2);
+/*write(STDOUT_FILENO, "$ ", 2);*/
 
 read_size = _getline(&line, &line_size, STDIN_FILENO);
 
 if (read_size == -1)
 {
-//write(STDOUT_FILENO, "\n", 1);
+/*write(STDOUT_FILENO, "\n", 1);*/
 break;
 }
 
