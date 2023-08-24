@@ -8,7 +8,7 @@
  * Return: The return 0.
  */
 
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
 FILE *input_file = NULL;
 
@@ -53,7 +53,7 @@ break;
 }
 
 if (line[read_size - 1] == '\n')
-{  
+{
 line[read_size - 1] = '\0';
 }
 }
@@ -61,14 +61,14 @@ else
 {
 ssize_t read_size;
 
-printf ("$ ");
-fflush (stdout);
+printf("$ ");
+fflush(stdout);
 
 read_size = _getline(&line, &line_size, STDIN_FILENO);
-	  
+
 if (read_size == -1)
 {
-break;   
+break;
 }
 
 if (line[read_size - 1] == '\n')
@@ -78,7 +78,7 @@ line[read_size - 1] = '\0';
 }
 nbr_args = count_tokens(line, " ");
 
-args = malloc(nbr_args *sizeof (char *));
+args = malloc(nbr_args *sizeof(char *));
 
 if (args == NULL)
 {
@@ -125,7 +125,7 @@ if (pid == 0)
 {
 cmd_execute(args[0], args);
 perror("execve");
-exit (1);
+exit(1);
 }
 
 else if (pid < 0)
@@ -139,13 +139,13 @@ waitpid(pid, NULL, 0);
 
 for (i = 0; i < arg_count; i++)
 {
-free (args[i]);
+free(args[i]);
 }
 }
 
 if (line)
-{   
-free (line);
+{
+free(line);
 }
 
 if (non_interactive)
