@@ -29,7 +29,7 @@ if (fd == -1)
 perror("open");
 return (1);
 }
-non_interactive = isatty(fileno(stdin));
+non_interactive = !isatty(fileno(stdin));
 }
 line_size = 0;
 while (1)
