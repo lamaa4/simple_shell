@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 FILE *input_file = NULL;
 
-int non_interactive = 0;
+int non_interactive;
 
 int fd, i;
 
@@ -33,7 +33,7 @@ non_interactive = !isatty(fileno(stdin));
 }
 line_size = 0;
 while (1)
-{
+{printf("-------------------------%d---",non_interactive);
 pid_t pid;
 int nbr_args;
 char *token;
