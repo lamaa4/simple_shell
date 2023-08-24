@@ -34,4 +34,7 @@ int execute_builtin(const char *command, char *const args[]);
 char *_strchr(const char *str, int character);
 int cmd_execute(const char *filename, char *const argv[]);
 
+/* env functions */
+int print_env(const char *cmd);
+
 #endif
