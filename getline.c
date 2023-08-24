@@ -87,8 +87,5 @@ _getline (char **lineptr, size_t * len, int fd)
 
   if (r != 0)
   {nbrCharsRead = 0;}
-printf("\n----%s\n ",lineptr[0]);
-fflush(stdout);
-
   return (ret);
 }
