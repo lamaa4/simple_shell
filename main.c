@@ -35,10 +35,10 @@ if (argc > 1 || !isatty(STDIN_FILENO))
 {
 non_interactive = 1;
 }
-
+printf("-------------------------%d---",non_interactive);
 line_size = 0;
 while (1)
-{printf("-------------------------%d---",non_interactive);
+{
 pid_t pid;
 int nbr_args;
 char *token;
