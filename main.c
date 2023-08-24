@@ -49,6 +49,7 @@ read_size = _getline(&line, &line_size, fd);
 
 if (read_size == -1)
 {
+write(STDOUT_FILENO, "\n", 1);
 break;
 }
 
