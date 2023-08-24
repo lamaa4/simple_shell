@@ -26,7 +26,7 @@ fd = open(argv[1], O_RDONLY);
 
 if (fd == -1)
 {
-perror ("open");
+perror("open");
 return (1);
 }
 non_interactive = 1;
@@ -78,7 +78,7 @@ line[read_size - 1] = '\0';
 }
 nbr_args = count_tokens(line, " ");
 
-args = malloc (nbr_args * sizeof (char *));
+args = malloc(nbr_args *sizeof (char *));
 
 if (args == NULL)
 {
@@ -98,7 +98,7 @@ args[arg_count] = _strdup(token);
 
 if (args[arg_count] == NULL)
 {
-perror ("strdup");
+perror("strdup");
 break;
 }
 
@@ -113,9 +113,9 @@ if (execute_builtin(args[0], args))
 {
 for (i = 0; i < arg_count; i++)
 {
-free (args[i]);
+free(args[i]);
 }
-free (line);
+free(line);
 continue;
 }
 
@@ -124,13 +124,13 @@ pid = fork ();
 if (pid == 0)
 {
 cmd_execute(args[0], args);
-perror ("execve");
+perror("execve");
 exit (1);
 }
 
 else if (pid < 0)
 {
-perror ("fork");
+perror("fork");
 }
 else
 {
@@ -150,7 +150,7 @@ free (line);
 
 if (non_interactive)
 {
-fclose (input_file);
+fclose(input_file);
 }
 
 return (0);
