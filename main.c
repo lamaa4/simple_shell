@@ -10,8 +10,6 @@
 
 int main(int argc, char *argv[])
 {
-FILE *input_file = NULL;
-
 int non_interactive;
 
 int fd, i;
@@ -41,12 +39,11 @@ while (1)
 {
 pid_t pid;
 int nbr_args;
+char **args;
 char *token;
 int arg_count = 0;
 read_size = 0;
 line = NULL;
-
-char **args;
 
 if (non_interactive)
 {
@@ -156,7 +153,7 @@ free(line);
 
 if (non_interactive == 1)
 {
-close(input_file);
+close(fd);
 }
 
 return (0);
