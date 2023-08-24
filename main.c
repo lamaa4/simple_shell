@@ -49,7 +49,6 @@ read_size = _getline(&line, &line_size, fd);
 
 if (read_size == -1)
 {
-write(STDOUT_FILENO, "\n", 1);
 break;
 }
 
@@ -68,6 +67,7 @@ read_size = _getline(&line, &line_size, STDIN_FILENO);
 
 if (read_size == -1)
 {
+write(STDOUT_FILENO, "\n", 1);
 break;
 }
 
@@ -108,7 +108,6 @@ token = _strtok(NULL, " ");
 }
 
 args[arg_count] = NULL;
-
 if (execute_builtin(args[0], args))
 {
 for (i = 0; i < arg_count; i++)
