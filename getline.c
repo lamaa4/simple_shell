@@ -14,9 +14,16 @@ ssize_t _getline(char **lineptr, size_t *len, int fd);
 
 ssize_t _getline(char **lineptr, size_t *len, int fd) {
     
-    size_t nbrCharsRead = 0;
+    static size_t nbrCharsRead = 0;
     char c;
     ssize_t r;
+    size_t ret;
+    
+    if (nbrCharsRead  != 0)
+    
+            return (-1);
+            
+    nbrCharsRead  = 0;
     
     if ( *len == 0)
     { 
@@ -76,7 +83,12 @@ c='a';
 
     }
 
-    (*lineptr)[nbrCharsRead] = '\0'; 
+    (*lineptr)[nbrCharsRead] = '\0';
+    
+    ret = nbrCharsRead;
+    
+	if (r != 0)
+		nbrCharsRead = 0;
 
-    return (nbrCharsRead);
+    return (ret);
 }
