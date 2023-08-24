@@ -6,13 +6,11 @@
  * @argv: input.
  *
  * Return: The return 0.
- */ 
-  
-int
-main (int argc, char *argv[]) 
+ */
+
+int main(int argc, char *argv[]) 
 {
-  
-FILE * input_file = NULL;
+FILE *input_file = NULL;
 
 int non_interactive = 0;
 
@@ -24,7 +22,7 @@ size_t line_size;
 
 if (argc > 1)
 {
-fd = open (argv[1], O_RDONLY);
+fd = open(argv[1], O_RDONLY);
 
 if (fd == -1)
 {
@@ -47,7 +45,7 @@ if (non_interactive)
 {
 ssize_t read_size;
 
-read_size = _getline (&line, &line_size, fd);
+read_size = _getline(&line, &line_size, fd);
 
 if (read_size == -1)
 {
@@ -66,7 +64,7 @@ ssize_t read_size;
 printf ("$ ");
 fflush (stdout);
 
-read_size = _getline (&line, &line_size, STDIN_FILENO);
+read_size = _getline(&line, &line_size, STDIN_FILENO);
 	  
 if (read_size == -1)
 {
@@ -78,7 +76,7 @@ if (line[read_size - 1] == '\n')
 line[read_size - 1] = '\0';
 }
 }
-nbr_args = count_tokens (line, " ");
+nbr_args = count_tokens(line, " ");
 
 args = malloc (nbr_args * sizeof (char *));
 
@@ -87,7 +85,7 @@ if (args == NULL)
 return (1);
 }
 
-token = _strtok (line, " ");
+token = _strtok(line, " ");
 
 if (token == NULL)
 {
@@ -96,7 +94,7 @@ continue;
 
 while (token != NULL)
 {
-args[arg_count] = _strdup (token);
+args[arg_count] = _strdup(token);
 
 if (args[arg_count] == NULL)
 {
@@ -106,12 +104,12 @@ break;
 
 arg_count++;
 
-token = _strtok (NULL, " ");
+token = _strtok(NULL, " ");
 }
 
 args[arg_count] = NULL;
 
-if (execute_builtin (args[0], args))
+if (execute_builtin(args[0], args))
 {
 for (i = 0; i < arg_count; i++)
 {
@@ -125,7 +123,7 @@ pid = fork ();
 
 if (pid == 0)
 {
-cmd_execute (args[0], args);
+cmd_execute(args[0], args);
 perror ("execve");
 exit (1);
 }
@@ -136,7 +134,7 @@ perror ("fork");
 }
 else
 {
-waitpid (pid, NULL, 0);
+waitpid(pid, NULL, 0);
 }
 
 for (i = 0; i < arg_count; i++)
