@@ -20,7 +20,7 @@ char *line = NULL;
 
 size_t line_size;
 
-if (argc != 1)
+if (argc > 1)
 {
 fd = open(argv[1], O_RDONLY);
 
@@ -29,7 +29,7 @@ if (fd == -1)
 perror("open");
 return (1);
 }
-non_interactive = 1;
+non_interactive = isatty(fileno(stdin));
 }
 line_size = 0;
 while (1)
