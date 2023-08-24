@@ -20,7 +20,7 @@ char *line = NULL;
 
 size_t line_size;
 
-if (argc > 1)
+if (argc != 1)
 {
 fd = open(argv[1], O_RDONLY);
 
