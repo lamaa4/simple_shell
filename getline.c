@@ -1,6 +1,6 @@
 #include "main.h"
 
-ssize_t _getline(char **lineptr, size_t *len, int fd);
+ssize_t _getline (char **lineptr, size_t * len, int fd);
 
 
 /**
@@ -12,80 +12,81 @@ ssize_t _getline(char **lineptr, size_t *len, int fd);
  * Return: The number of bytes read.
  */
 
-ssize_t _getline(char **lineptr, size_t *len, int fd) {
-    
-    static size_t nbrCharsRead = 0;
-    char c;
-    ssize_t r;
-    size_t ret;
-    
-    if (nbrCharsRead  != 0)
-    
-            return (-1);
-            
-    nbrCharsRead  = 0;
-    
-    if ( *len == 0)
-    { 
-        *len = 1024;
-    }
-    
-    if (*lineptr == NULL) 
+ssize_t
+_getline (char **lineptr, size_t * len, int fd)
+{
+
+  static size_t nbrCharsRead = 0;
+  char c;
+  ssize_t r;
+  size_t ret;
+
+  if (nbrCharsRead != 0)
+
+    return (-1);
+
+  nbrCharsRead = 0;
+
+  if (*len == 0)
     {
-        *lineptr = (char *)malloc(sizeof(char) * *len);
-
-        if (*lineptr == NULL) 
-        {
-            return (-1);
-        }
+      *len = 1024;
     }
-    
 
-    
-c='a';
-    while (c!='\n') 
+  if (*lineptr == NULL)
     {
-        r = read(fd, &c, 1);
+      *lineptr = (char *) malloc (sizeof (char) * *len);
 
-        if (r == -1) 
-        {
-            free(lineptr);
-            return (-1);
-            
-        } 
-        else if (r == 0 && nbrCharsRead == 0)
-        {
-                free(lineptr);
-                return (-1);
-           
-        }else if (r == 0 && nbrCharsRead != 0)
-        {
-			nbrCharsRead++;
-			break;
-		}
+      if (*lineptr == NULL)
+	{
+	  return (-1);
+	}
+    }
 
-        if (nbrCharsRead >= ((size_t) (*len - 1))) 
-        {
-           char *new_ptr = (char *)realloc(*lineptr, *len+1);
 
-            if (new_ptr == NULL) 
-            {
-                return (-1);
-            }
 
-            *lineptr = new_ptr;
-        }
+  c = 'a';
+  while (c != '\n')
+    {
+      r = read (fd, &c, 1);
 
-        (*lineptr)[nbrCharsRead++] = c;
+      if (r == -1)
+	{
+	  return (-1);
+
+	}
+      else if (r == 0 && nbrCharsRead == 0)
+	{
+	        return (-1);
+
+	}
+      else if (r == 0 && nbrCharsRead != 0)
+	{
+	  nbrCharsRead++;
+	  break;
+	}
+
+      if (nbrCharsRead >= ((size_t) (*len - 1)))
+	{
+	  char *new_ptr = (char *) realloc (*lineptr, *len + 1);
+
+	  if (new_ptr == NULL)
+	    {
+	      return (-1);
+	    }
+
+	  *lineptr = new_ptr;
+	}
+
+      (*lineptr)[nbrCharsRead++] = c;
 
     }
 
-    (*lineptr)[nbrCharsRead] = '\0';
-    
-    ret = nbrCharsRead;
-    
-	if (r != 0)
-		nbrCharsRead = 0;
+  (*lineptr)[nbrCharsRead] = '\0';
 
-    return (ret);
+  ret = nbrCharsRead;
+
+  if (r != 0)
+    nbrCharsRead = 0;
+
+  return (ret);
 }
