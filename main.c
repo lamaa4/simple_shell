@@ -29,8 +29,13 @@ if (fd == -1)
 perror("open");
 return (1);
 }
-non_interactive = !isatty(fileno(stdin));
 }
+
+if (argc > 1 || !isatty(STDIN_FILENO))
+{
+non_interactive = 1;
+}
+
 line_size = 0;
 while (1)
 {printf("-------------------------%d---",non_interactive);
