@@ -14,7 +14,8 @@ int print_env(const char *cmd)
 	
 	if (!env)
 		return (-1);
-	(void) cmd;        
+	
+	(void) cmd;
 	for (i = 0; env[i] != NULL; i++)
 	{
         printf("%s\n", env[i]);
