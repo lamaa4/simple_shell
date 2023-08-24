@@ -80,7 +80,7 @@ int cmd_execute(const char *filename, char *const argv[])
                 
                 if (path_env == NULL)
                 {
-                        perror("getenv");
+                        /*perror("getenv");*/
                         return (-1);
                 }
                 else
