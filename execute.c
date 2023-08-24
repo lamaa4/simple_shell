@@ -69,7 +69,7 @@ int execute_builtin(const char *cmd, char *const args[])
   
 int cmd_execute(const char *filename, char *const argv[]) 
 {
-        if (filename[0] == '/')
+        if (_strchr(filename, '/') != NULL)
         {
                 return (execve(filename, argv, NULL));
         }
