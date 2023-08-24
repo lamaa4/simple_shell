@@ -9,6 +9,13 @@ int is_delim(char c, const char *delim);
 int count_tokens(char *str, char *delim);
 int token_len(char *str, char *delim);
 
+/**
+ * _is_delim - Check delimeter
+ * @c: c
+ * @delim: delim
+ *
+ * Return: 0 if ture
+ */
 int is_delim(char c, const char *delim)
 {
     
@@ -23,6 +30,13 @@ int is_delim(char c, const char *delim)
     return (1);
 }
 
+/**
+ * _toke - Get token
+ * @str: the characters.
+ * @delim: delim.
+ *
+ * Return: token
+ */
 char *token(const char *str, const char *delim)
 {
      int i=0, j;
@@ -42,6 +56,13 @@ char *token(const char *str, const char *delim)
     return (NULL);
 }
 
+/**
+ * _strtok - Get tokens
+ * @str: the characters.
+ * @delim: delim.
+ *
+ * Return: token.
+ */
 char *_strtok(char *str, const char *delim)
 {
     static char *saveptr = NULL;
