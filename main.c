@@ -136,12 +136,14 @@ else
 waitpid(pid, NULL, 0);
 }
 
+if (non_interactive == 0)
+{
 for (i = 0; i < arg_count; i++)
 {
 free(args[i]);
 }
-if (non_interactive == 0)
-{
+free(args);
+
 free(line);
 }
 }
