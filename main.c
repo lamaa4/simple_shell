@@ -1,7 +1,7 @@
 #include "main.h"
 
 int main(int argc, char *argv[])
-/*{
+{
         FILE *input_file = NULL;
         int non_interactive = 0;
         int fd, i;
@@ -135,4 +135,4 @@ int main(int argc, char *argv[])
     }
 
     return (0);
-}*/
+}
