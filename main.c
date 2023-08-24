@@ -123,7 +123,7 @@ pid = fork();
 if (pid == 0)
 {
 cmd_execute(args[0], args);
-perror("execve");
+/*perror("execve");*/
 exit(EXIT_FAILURE);
 }
 
