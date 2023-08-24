@@ -17,6 +17,7 @@ int non_interactive;
 int fd, i;
 
 char *line = NULL;
+ssize_t read_size;
 
 size_t line_size;
 
@@ -42,16 +43,16 @@ pid_t pid;
 int nbr_args;
 char *token;
 int arg_count = 0;
+read_size = 0;
+line = NULL;
 
 char **args;
 
 if (non_interactive)
 {
-ssize_t read_size;
-
 read_size = _getline(&line, &line_size, fd);
 
-if (read_size == -1)
+if (read_size == -1 || read_size == 0)
 {
 break;
 }
@@ -63,14 +64,12 @@ line[read_size - 1] = '\0';
 }
 else
 {
-ssize_t read_size;
-
 printf("$ ");
 fflush(stdout);
 
 read_size = _getline(&line, &line_size, STDIN_FILENO);
 
-if (read_size == -1)
+if (read_size == -1 || read_size == 0)
 {
 break;
 }
@@ -144,6 +143,10 @@ for (i = 0; i < arg_count; i++)
 {
 free(args[i]);
 }
+if (non_interactive == 0)
+{
+free(line);
+}
 }
 
 if (line)
@@ -151,9 +154,9 @@ if (line)
 free(line);
 }
 
-if (non_interactive)
+if (non_interactive == 1)
 {
-fclose(input_file);
+close(input_file);
 }
 
 return (0);
