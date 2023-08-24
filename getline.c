@@ -49,17 +49,14 @@ c='a';
 
         if (r == -1) 
         {
-            lineptr = NULL;
             free(lineptr);
             return (-1);
             
         } 
         else if (r == 0 && nbrCharsRead == 0)
         {
-            
-            lineptr = NULL;
-            free(lineptr);
-            return (-1);
+                free(lineptr);
+                return (-1);
            
         }else if (r == 0 && nbrCharsRead != 0)
         {
