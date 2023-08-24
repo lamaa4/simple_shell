@@ -124,7 +124,7 @@ if (pid == 0)
 {
 cmd_execute(args[0], args);
 perror("execve");
-exit(1);
+exit(EXIT_FAILURE);
 }
 
 else if (pid < 0)
