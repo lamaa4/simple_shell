@@ -1,4 +1,13 @@
 #include "main.h"
+
+/**
+ * main - Runs a simple UNIX command interpreter.
+ * @argc: input.
+ * @argv: input.
+ *
+ * Return: The return 0.
+ */
+
 int main(int argc, char *argv[])
 {
         FILE *input_file = NULL;
