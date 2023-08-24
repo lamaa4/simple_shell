@@ -49,6 +49,7 @@ read_size = _getline(&line, &line_size, fd);
 
 if (read_size == -1)
 {
+write(STDOUT_FILENO, "\n", 1);
 break;
 }
 
@@ -61,8 +62,7 @@ else
 {
 ssize_t read_size;
 
-printf("$ ");
-fflush(stdout);
+write(STDOUT_FILENO, "$ ", 2);
 
 read_size = _getline(&line, &line_size, STDIN_FILENO);
 
