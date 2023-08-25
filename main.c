@@ -123,8 +123,8 @@ pid = fork();
 if (pid == 0)
 {
 cmd_execute(args[0], args);
-/*perror("execve");*/
-exit(EXIT_FAILURE);
+printf("%s: No such file or directory\n", argv[0]);
+exit(1);
 }
 
 else if (pid < 0)
