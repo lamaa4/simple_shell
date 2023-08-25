@@ -95,13 +95,14 @@ char *_strtok(char *str, const char *delim)
                 }
                 count_delim++;
         }
-       
    }
-   
    *token_end = '\0'; 
    token_start = saveptr;
    saveptr = c + 1;
-        
+if (*token_start == '\0')
+   {
+       return (_strtok(saveptr, delim));
+   }
     } 
     else 
     {
