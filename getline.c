@@ -67,7 +67,7 @@ _getline (char **lineptr, size_t * len, int fd)
 
       if (nbrCharsRead >= ((size_t) (*len - 1)))
 	{
-	  char *new_ptr = (char *) realloc (*lineptr, *len * 5);
+	  char *new_ptr = (char *) realloc (*lineptr, *len * 10);
 
 	  if (new_ptr == NULL)
 	    {
