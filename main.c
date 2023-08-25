@@ -12,12 +12,12 @@ int main(int argc, char *argv[])
 {
 int non_interactive;
 
-int fd, i;
+int fd =0, i = 0;
 
 char *line = NULL;
-ssize_t read_size;
+ssize_t read_size = 0;
 
-size_t line_size;
+size_t line_size = 0;
 
 if (argc > 1)
 {
