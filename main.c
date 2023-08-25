@@ -123,7 +123,7 @@ pid = fork();
 if (pid == 0)
 {
 cmd_execute(args[0], args);
-printf("%s: No such file or directory\n", argv[0]);
+printf("%s: 1: %s: not found\n", argv[0], args[0]);
 exit(1);
 }
 
